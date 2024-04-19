@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>CATALOGO | HOUSE OF FOOTBALL</title>
+
+    <link rel="icon" type="image/x-icon" href="Immagini/favicon.ico">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+  </head>
+
+  <style>
+
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  body {
+      background-color: White;
+  }
+
+  h1 {
+    font-family: "Audiowide", sans-serif;
+    font-size: 35px;
+    font-weight: normal;
+    color: black;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+  }
+
+  h3 {
+    font-family: "Audiowide", sans-serif;
+    font-size: 12.5px;
+    font-weight: normal;
+    color: black;
+  }
+
+  .pallone {
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+  }
+
+  .maglietta {
+    position: absolute;
+    top: 10%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+  }
+
+  section.content {
+      padding: 50px;
+      width: calc(100% - 60px);
+      min-height: calc(100vh - 60px);
+      margin: 60px 0 0 60px;
+  }
+
+  section.content::after {
+      content: '';
+      display: table;
+      overflow: hidden;
+      clear: both;
+  }
+
+  .video{
+    float: left;
+    width: 290px;
+    margin: 40px;
+  }
+
+  .video .video-top img{
+    max-width: 100%;
+  }
+
+  .video-bottom{
+    margin-top: 20px;
+  }
+
+  .video-bottom-left{
+    float: left;
+    width: 50px;
+  }
+
+  .video-bottom-left img{
+    max-width: 100%
+  }
+
+  .video-bottom-right{
+    float: left;
+    width: calc(100% - 50px);
+    padding: 0 20px;
+    font-size: 10px;
+  }
+
+  #titolo{
+    font-family: "Audiowide", sans-serif;
+    font-size: 12.5px;
+    font-weight: normal;
+    color: black;
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  #paragrafo{
+    color: gray;
+    font-family: "Audiowide", sans-serif;
+  }
+
+  .video-top img {
+    border: 4px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }
+
+  .video-top img:hover {
+    box-shadow: 0 0 4px 3px rgba(0, 140, 186, 0.5);
+  }
+
+  .container {
+    position: relative;
+    width: 100%;
+  }
+
+  .image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+
+  .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+  }
+
+  .container:hover .image {
+    opacity: 0.3;
+  }
+
+  .container:hover .middle {
+    opacity: 1;
+  }
+
+  .contenuto {
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+  }
+
+  button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: "Audiowide", sans-serif;
+  }
+
+  button.learn-more {
+    width: 12rem;
+    height: auto;
+  }
+
+  button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 4.5rem;
+    background: #282936;
+    border-radius: 1.625rem;
+  }
+
+  button.learn-more .circle .icon {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+   background: #fff;
+  }
+
+  button.learn-more .circle .icon.arrow {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   left: 0.625rem;
+   width: 1.125rem;
+   height: 0.125rem;
+   background: none;
+  }
+
+  button.learn-more .circle .icon.arrow::before {
+   position: absolute;
+   content: "";
+   top: -0.29rem;
+   right: 0.0625rem;
+   width: 0.625rem;
+   height: 0.625rem;
+   border-top: 0.125rem solid #fff;
+   border-right: 0.125rem solid #fff;
+   transform: rotate(45deg);
+  }
+
+  button.learn-more .button-text {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   padding: 0.75rem 0;
+   margin: 0 0 0 1.85rem;
+   color: #282936;
+   font-weight: 700;
+   line-height: 1.6;
+   text-align: center;
+   text-transform: uppercase;
+  }
+
+  button:hover .circle {
+   width: 100%;
+  }
+
+  button:hover .circle .icon.arrow {
+   background: #fff;
+   transform: translate(1rem, 0);
+  }
+
+  button:hover .button-text {
+   color: #fff;
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .button {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    background: none;
+    color: #0f1923;
+    cursor: pointer;
+    position: relative;
+    padding: 8px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all .15s ease;
+    margin: 25px;
+  }
+
+  .button::before, .button::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    height: calc(50% - 5px);
+    border: 1px solid #7D8082;
+    transition: all .15s ease;
+  }
+
+  .button::before {
+    top: 0;
+    border-bottom-width: 0;
+  }
+
+  .button::after {
+    bottom: 0;
+    border-top-width: 0;
+  }
+
+  .button:active, .button:focus {
+    outline: none;
+  }
+
+  .button:active::before, .button:active::after {
+    right: 3px;
+    left: 3px;
+  }
+
+  .button:active::before {
+    top: 3px;
+  }
+
+  .button:active::after {
+    bottom: 3px;
+  }
+
+  .button_lg {
+    position: relative;
+    display: block;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #0f1923;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 0px 1px transparent;
+  }
+
+  .button_lg::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 2px;
+    background-color: #0f1923;
+  }
+
+  .button_lg::after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 4px;
+    height: 4px;
+    background-color: #0f1923;
+    transition: all .2s ease;
+  }
+
+  .button_sl {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: -1px;
+    left: -8px;
+    width: 0;
+    background-color: Green;
+    transform: skew(-15deg);
+    transition: all .2s ease;
+  }
+
+  .button_text {
+    position: relative;
+  }
+
+  .button:hover {
+    color: #0f1923;
+  }
+
+  .button:hover .button_sl {
+    width: calc(100% + 15px);
+  }
+
+  .button:hover .button_lg::after {
+    background-color: #fff;
+  }
+
+  label{
+    position: relative;
+    height: 125px;
+    width: 125px;
+    display: inline-block;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    border-left-color: #5cb85c;
+    animation: rotate 1.2s linear infinite;
+  }
+
+  @keyframes rotate {
+    50%{
+      border-left-color: #9b59b6;
+    }
+    75%{
+      border-left-color: #e67e22;
+    }
+    100%{
+      transform: rotate(360deg);
+    }
+  }
+
+  label .check-icon{
+    display: none;
+  }
+
+  label .check-icon:after{
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 28px;
+    transform: scaleX(-1) rotate(135deg);
+    height: 56px;
+    width: 28px;
+    border-top: 4px solid #5cb85c;
+    border-right: 4px solid #5cb85c;
+    transform-origin: left top;
+    animation: check-icon 0.8s ease;
+  }
+
+  @keyframes check-icon {
+    0%{
+      height: 0;
+      width: 0;
+      opacity: 1;
+    }
+    20%{
+      height: 0;
+      width: 28px;
+      opacity: 1;
+    }
+    40%{
+      height: 56px;
+      width: 28px;
+      opacity: 1;
+    }
+    100%{
+      height: 56px;
+      width: 28px;
+      opacity: 1;
+    }
+  }
+
+  input{
+    display: none;
+  }
+
+  input:checked ~ label .check-icon{
+    display: block;
+  }
+
+  input:checked ~ label{
+    animation: none;
+    border-color: #5cb85c;
+    transition: border 0.5s ease-out;
+  }
+
+  </style>
+
+  <body>
+
+    <div class="pallone">
+
+      <img src="Immagini/Pallone.png" alt="" style="height: 75px; width: 75px">
+
+    </div>
+
+    <h1 style="border: 4px solid black; border-radius: 20px">HOUSE OF FOOTBALL</h1>
+
+    <div class="maglietta">
+
+      <img src="Immagini/Maglia.png" alt="" style="height: 75px; width: 75px">
+
+    </div>
+
+    <section class="content">
+
+    </section>
+
+    <div id="popup" class="popup">
+
+      <div class="popup-content">
+
+        <br><br>
+
+        <input type="checkbox" id="check">
+        <label for="check">
+          <div class="check-icon"></div>
+        </label>
+
+        <br>
+
+        <h3 id="testo"></h3>
+
+        <div class="popup-buttons">
+
+          <button class="button" onclick="closePopup()">
+            <span class="button_lg">
+              <span class="button_sl"></span>
+              <span class="button_text">Continua Acquisti</span>
+            </span>
+          </button>
+
+          <button class="button" onclick="goToCheckout()">
+            <span class="button_lg">
+              <span class="button_sl"></span>
+              <span class="button_text">Vai al Checkout</span>
+            </span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+
+    const obj = localStorage.getItem("Oggetto");
+    const dati = JSON.parse(obj);
+
+    var sezione = document.getElementsByClassName('content')[0];
+
+    for (var i = 0; i < dati.Prodotti.length; i++) {
+
+      var div = document.createElement('div');
+      var div1 = document.createElement('div1');
+      var div2 = document.createElement('div2');
+      var div3 = document.createElement('div3');
+      var div4 = document.createElement('div4');
+      var div5 = document.createElement('div5');
+      var div6 = document.createElement('div6');
+      var div7 = document.createElement('div7');
+      var div8 = document.createElement('div8');
+
+      div.classList.add('video');
+      div1.classList.add('video-top');
+      div2.classList.add('video-bottom');
+      div3.classList.add('container');
+      div4.classList.add('video-bottom-left');
+      div5.classList.add('middle');
+      div6.classList.add('video-bottom-right');
+      div7.classList.add('contenuto');
+
+      div.appendChild(div1);
+      div.appendChild(div2);
+
+      div1.appendChild(div3);
+      div2.appendChild(div4);
+      div2.appendChild(div6);
+
+      var img = document.createElement("img");
+      img.src = dati.Prodotti[i].Linkdivisa;
+      img.className = "image";
+      img.style = "height: 350px; width: 300px; border: 4px solid LightGray; border-radius: 4px;";
+      img.alt = "Immagine non disponibile";
+      div3.appendChild(img);
+
+      div3.appendChild(div5);
+
+      div5.appendChild(div7);
+
+      var bottone = document.createElement("button");
+      bottone.setAttribute("class", 'learn-more');
+      var squadra = dati.Prodotti[i].Squadra;
+      var divisa = dati.Prodotti[i].Divisa;
+      var marca = dati.Prodotti[i].Marca;
+      var composizione = dati.Prodotti[i].Composizione;
+      var prezzo = dati.Prodotti[i].Prezzo;
+      bottone.setAttribute("onclick", "aggiungi('" + squadra.toString() + "', '" + divisa.toString() + "', '" + marca.toString() + "', '" + composizione.toString() + "', " + prezzo.toString() + ")");
+      var span1 = document.createElement("span");
+      span1.setAttribute("class", 'circle');
+      span1.setAttribute("aria-hidden", 'true');
+      var span2 = document.createElement("span");
+      span2.setAttribute("class", 'icon arrow');
+      var span3 = document.createElement("span");
+      span3.setAttribute("class", 'button-text');
+      span3.textContent = "AGGIUNGI AL CARRELLO";
+      span1.appendChild(span2);
+      bottone.appendChild(span1);
+      bottone.appendChild(span3);
+      div7.appendChild(bottone);
+
+      var img = document.createElement("img");
+      img.src = dati.Prodotti[i].Linklogo;
+      img.style = "height: 50px; width: 50px; margin-top: 20px;";
+      img.alt = "Immagine non disponibile";
+      div4.appendChild(img);
+
+      var h3 = document.createElement("h3");
+      h3.innerHTML = dati.Prodotti[i].Squadra + "<br>" + dati.Prodotti[i].Divisa;
+      h3.id = "titolo";
+      h3.style.textTransform = "uppercase";
+      div6.appendChild(h3);
+
+      var p = document.createElement("p");
+      p.innerHTML = "Marca: " + dati.Prodotti[i].Marca + "<br>Composizione: " + dati.Prodotti[i].Composizione + "<br>Prezzo: " + dati.Prodotti[i].Prezzo + "€";
+      p.id = "paragrafo";
+      div6.appendChild(p);
+
+      sezione.appendChild(div);
+    }
+
+    const loader = setTimeout(caricamento, 1500);
+
+    function caricamento() {
+      document.getElementById("check").checked = true;
+      document.getElementById("testo").innerHTML = "ARTICOLO AGGIUNTO <br> AL CARRELLO"
+    }
+
+    const carrello = [];
+    let totale = 0;
+
+    function aggiungi(squadra, divisa, marca, materiale, prezzo){
+      document.getElementById("popup").style.display = "block";
+      const maglia = ["Squadra: "+squadra, " Divisa: "+divisa, "<br>Marca: "+marca, " Materiale: "+materiale, " Prezzo: "+prezzo+"€"];
+      var denaro = parseInt(prezzo)
+      totale = totale + denaro;
+      carrello.push("<br><br>"+"- " + maglia);
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+
+    function goToCheckout() {
+      const obj = {carrello: carrello, totale: totale};
+      const oggetto = JSON.stringify(obj);
+
+      if (typeof(Storage) !== "undefined") {
+        localStorage.setItem("Oggetto", oggetto);
+      }
+
+      else {
+        document.getElementById("out").innerHTML = "Il browser non supporta lo storage";
+      }
+      document.location.href="Carrello-House-of-Football.html";
+    }
+
+    </script>
+
+  </body>
+</html>

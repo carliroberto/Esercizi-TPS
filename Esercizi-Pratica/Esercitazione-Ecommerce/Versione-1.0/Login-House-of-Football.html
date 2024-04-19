@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>LOGIN | HOUSE OF FOOTBALL</title>
+
+    <link rel="icon" type="image/x-icon" href="Immagini/favicon.ico">
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+  </head>
+
+  <style>
+
+  *{
+    font-family: "Audiowide", sans-serif;
+  }
+
+  body{
+      background-image: url("Immagini/Login.jpg");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+  }
+
+  .contenitore{
+    position: absolute;
+    left: 62.5%;
+  }
+
+  .box{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 90vh;
+  }
+
+  .container{
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      padding: 0 15px 0 15px;
+
+  }
+
+  span{
+      color: #fff;
+      font-size: small;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0 10px 0;
+  }
+
+  header{
+      color: #fff;
+      font-size: 30px;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0 10px 0;
+  }
+
+  .input-field .input{
+      height: 45px;
+      width: 87%;
+      border: none;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 15px;
+      padding: 0 0 0 45px;
+      background: rgba(255,255,255,0.1);
+      outline: none;
+  }
+
+  i{
+      position: relative;
+      top: -33px;
+      left: 17px;
+      color: #fff;
+  }
+
+  ::-webkit-input-placeholder{
+      color: #fff;
+  }
+
+  .submit{
+      border: none;
+      border-radius: 30px;
+      font-size: 15px;
+      height: 45px;
+      outline: none;
+      width: 100%;
+      color: black;
+      background: rgba(255,255,255,0.7);
+      cursor: pointer;
+      transition: .3s ;
+  }
+
+  .submit:hover{
+      box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  label a{
+      text-decoration: none;
+      color: #fff;
+  }
+
+  button {
+    position: relative;
+   display: inline-block;
+   cursor: pointer;
+   outline: none;
+   border: 0;
+   vertical-align: middle;
+   text-decoration: none;
+   background: transparent;
+   padding: 0;
+   font-size: inherit;
+   font-family: inherit;
+  }
+
+  button.learn-more {
+   width: 12rem;
+   height: auto;
+  }
+
+  button.learn-more .circle {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: relative;
+   display: block;
+   margin: 0;
+   width: 3rem;
+   height: 3rem;
+   background: #282936;
+   border-radius: 1.625rem;
+  }
+
+  button.learn-more .circle .icon {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   margin: auto;
+   background: #fff;
+  }
+
+  button.learn-more .circle .icon.arrow {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   left: 0.625rem;
+   width: 1.125rem;
+   height: 0.125rem;
+   background: none;
+  }
+
+  button.learn-more .circle .icon.arrow::before {
+   position: absolute;
+   content: "";
+   top: -0.29rem;
+   right: 0.0625rem;
+   width: 0.625rem;
+   height: 0.625rem;
+   border-top: 0.125rem solid #fff;
+   border-right: 0.125rem solid #fff;
+   transform: rotate(45deg);
+  }
+
+  button.learn-more .button-text {
+   transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   padding: 0.75rem 0;
+   margin: 0 0 0 1.85rem;
+   color: #282936;
+   font-weight: 700;
+   line-height: 1.6;
+   text-align: center;
+   text-transform: uppercase;
+  }
+
+  button:hover .circle {
+   width: 100%;
+  }
+
+  button:hover .circle .icon.arrow {
+   background: #fff;
+   transform: translate(1rem, 0);
+  }
+
+  button:hover .button-text {
+   color: #fff;
+  }
+
+  .popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .popup-content {
+    position: absolute;
+    top: 50%;
+    left: 32.5%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .neu-button {
+    background-color: #e0e0e0;
+    border-radius: 50px;
+    box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
+    color: #4d4d4d;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 15px 40px;
+    transition: all 0.2s ease-in-out;
+    border: 2px solid rgb(206, 206, 206);
+  }
+
+  .neu-button:hover {
+    box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+  }
+
+  .neu-button:focus {
+    outline: none;
+    box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+  }
+
+  </style>
+
+  <body>
+
+    <div class="contenitore">
+
+      <div class="box">
+
+        <div class="container">
+
+          <div class="top">
+            <center>
+              <header>LOGIN <br> HOUSE OF FOOTBALL</header>
+              <br>
+            </center>
+          </div>
+
+          <div class="input-field">
+            <input type="text" class="input" placeholder="Username" id="username" required>
+            <i class='bx bx-user' ></i>
+          </div>
+
+          <div class="input-field">
+            <input type="Password" class="input" placeholder="Password" id="password" required>
+            <i class='bx bx-lock-alt'></i>
+          </div>
+
+          <br>
+
+          <div class="input-field">
+            <input class="submit" type="button" onclick="login()" value="ACCEDI AL SITO WEB">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="popup" class="popup">
+
+      <div class="popup-content">
+
+        <h3>LE CREDENZIALI INSERITE SONO ERRATE!</h3>
+
+        <div class="popup-buttons">
+
+          <button class="neu-button" onclick="closePopup()">RIPROVA</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script>
+
+    function login(){
+      let user=document.getElementById("username").value;
+      let pass=document.getElementById("password").value;
+      if(user=="EcommerceRobertoCarli" && pass=="Login_House_Of_Football"){
+        location.href = "Catalogo-House-of-Football.html";
+      }
+      else{
+        document.getElementById("popup").style.display = "block";
+      }
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+    }
+
+    </script>
+
+  </body>
+</html>
