@@ -1,0 +1,94 @@
+<scuola>
+    <classe istituto="Cannizzaro">
+        
+        <anno>
+            
+            <numero>5°</numero>
+        
+        </anno>
+        
+        <sezione>
+            
+            <lettera>F</lettera>
+            
+        </sezione>
+        
+        <alunni>
+            
+            <nome>Matteo</nome>
+            <cognome>Zibaldone</cognome>
+        
+        </alunni>
+        
+    </classe>
+    
+    <classe istituto="Mattei">
+        
+        <anno>
+            
+            <numero>1°</numero>
+        
+        </anno>
+        
+        <sezione>
+            
+            <lettera>C</lettera>
+            
+        </sezione>
+        
+        <alunni>
+            
+            <nome>Andrea</nome>
+            <cognome>Pistola</cognome>
+                
+        </alunni>
+        
+    </classe>
+    
+    <classe istituto="Cavalleri">
+        
+        <anno>
+            
+            <numero>4°</numero>
+        
+        </anno>
+        
+        <sezione>
+            
+            <lettera>A</lettera>
+            
+        </sezione>
+        
+        <alunni>
+            
+            <nome>Mattia</nome>
+            <cognome>Di Gianantonio</cognome>
+                
+        </alunni>
+        
+    </classe>
+    
+    <classe istituto="Maggiolini">
+        
+        <anno>
+            
+            <numero>2°</numero>
+            
+        </anno>
+        
+        <sezione>
+            
+            <lettera>E</lettera>
+            
+        </sezione>
+        
+        <alunni>
+            
+            <nome>Carmelo</nome>
+            <cognome>Scipione</cognome>
+                
+        </alunni>
+        
+    </classe>
+    
+</scuola>

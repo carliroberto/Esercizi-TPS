@@ -1,0 +1,133 @@
+<html>
+
+<style>
+    .container {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+      gap: 20px;
+    }
+
+    body{
+        font-family: "Audiowide", sans-serif;
+        text-align: center;
+    }
+
+    
+    .input {
+      border-radius: 10px;
+      outline: 2px solid black;
+      border: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #e2e2e2;
+      outline-offset: 3px;
+      padding: 10px 1rem;
+      transition: 0.25s;
+      margin: 10px;
+    }
+    
+    .input:focus {
+        outline: solid red;
+      outline-offset: 5px;
+      background-color: #fff
+    }
+    
+    .box {
+      width: 140px;
+      height: auto;
+      float: left;
+      transition: .5s linear;
+      position: relative;
+      display: block;
+      overflow: hidden;
+      padding: 15px;
+      text-align: center;
+      margin: 0 5px;
+      background: transparent;
+      text-transform: uppercase;
+      font-weight: 900;
+      border: solid
+    }
+    
+    .box:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      bottom: 0;
+      height: 4px;
+      width: 100%;
+      border-bottom: 4px solid transparent;
+      border-left: 4px solid transparent;
+      box-sizing: border-box;
+      transform: translateX(100%);
+    }
+    
+    .box:after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      border-top: 4px solid transparent;
+      border-right: 4px solid transparent;
+      box-sizing: border-box;
+      transform: translateX(-100%);
+    }
+    
+    .box:hover {
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    }
+    
+    .box:hover:before {
+      border-color: red;
+      height: 100%;
+      transform: translateX(0);
+      transition: .3s transform linear, .3s height linear .3s;
+    }
+    
+    .box:hover:after {
+      border-color: red;
+      height: 100%;
+      transform: translateX(0);
+      transition: .3s transform linear, .3s height linear .5s;
+    }
+    
+    button {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      outline: none;
+      border: none;
+      background: transparent;
+    }
+
+</style>
+
+<body ng-init="name='World'">
+	<div>
+    
+        <input type="text" placeholder="Place..." name="text" class="input" ng-model="place">
+        <input type="text" placeholder="Date..." name="text" class="input" ng-model="date">
+        <input type="text" placeholder="Hour..." name="text" class="input" ng-model="hour">
+        <br>
+        <input type="text" placeholder="Team..." name="text" class="input" ng-model="team">
+        <input type="text" placeholder="Penalty..." name="text" class="input" ng-model="penalty">
+        <input type="text" placeholder="Description..." name="text" class="input" ng-model="description">
+    
+    </div>
+    
+    <br><br>
+    <button ng-click="inserisci(place, date, hour, team, penalty, description)">
+        <span class="box">Invia dati</span>
+    </button>
+    <br><br>
+    
+    <div ng-controller="SCtrl">
+        <p>{{ dati }}</p>
+    </div>
+    
+</body>
+
+</html>
+    

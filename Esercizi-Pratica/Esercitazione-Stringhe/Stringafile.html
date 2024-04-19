@@ -1,0 +1,88 @@
+<html>
+    <head>
+
+        <title>Split File Testo - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-StringaFile.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Split di un File di Testo</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="file" onchange="readFile(this)">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+        </div>
+
+        <script>
+
+            function readFile(input) {
+                let file= input.files[0];
+                let fileReader= new FileReader();
+                fileReader.readAsText(file);
+                fileReader.onload= function () {
+                    var stringhe = fileReader.result;
+                    var righe = stringhe.split(/\n/);
+
+                    //Stampa di tutti i valori di una singola riga:
+
+                    for (var i=0; i<righe.length; i++){
+                        var lista;
+                        lista = righe[9] + "<br>";
+                        document.getElementById("out").innerHTML=lista;
+                    }
+
+                    //Stampa di un solo valore per tutte le righe:
+
+                    /*for(var i=0; i<righe.length-1; i++){
+                        var colonne;
+                        var dimessi_guariti;
+                        colonne = righe[i].split(',');
+                        dimessi_guariti = colonne[9] + "<br>";
+                        document.write(dimessi_guariti);
+                    }*/
+                }
+
+                fileReader.onerror= function() {
+                    document.window(fileReader.error);
+                }
+            }
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+    <head>
+
+        <title>Scorrimento Vettore - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-ScorriVettore.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Scorrimento Vettore</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <input class="stileInput" type="number" id="InputNum" name="InputNum">
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="button" onclick="InserisciNum()" value="Inserisci Numeri">
+
+            <input class="stile" type="button" onclick="IndiceSinistra()" value="Scorri Indice Sx">
+
+            <input class="stile" type="button" onclick="IndiceDestra()" value="Scorri Indice Dx">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+            <p id="out1"></p>
+
+            <p id="out2"></p>
+
+        </div>
+
+        <script>
+
+            const vett=[];
+            document.getElementById("out").innerHTML=vett;
+
+            function InserisciNum(){
+                let x=document.getElementById("InputNum").value;
+                parseInt(x);
+                vett.push(x);
+                document.getElementById("out").innerHTML=vett;
+            }
+
+            function IndiceSinistra(){
+                for(let i=0,  k=1; i<vett.length && k<vett.length; i++, k++){
+                    let temp=vett[i];
+                    vett[i]=vett[k];
+                    vett[k]=temp;
+                }
+                document.getElementById("out1").innerHTML=vett;
+            }
+
+             function IndiceDestra() {
+                for(let j=vett.length-1, z=vett.length-2; j>=0 && z>=0; j--, z--){
+                    let temp1=vett[j];
+                    vett[j]=vett[z];
+                    vett[z]=temp1;
+                }
+                document.getElementById("out2").innerHTML=vett;
+            }
+
+        </script>
+    </body>
+</html>

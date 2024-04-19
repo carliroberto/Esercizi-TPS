@@ -1,0 +1,67 @@
+<html>
+    <head>
+
+        <title>Lettura di un File Remoto - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-LetturaFileRemoto.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Lettura di un File Remoto</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="button" onclick="LeggiFile()" value="Leggi il File HTML da Remoto">
+
+        </div>
+
+        <script>
+
+            function LeggiFile() {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("out").innerHTML = this.responseText;
+                    }
+                };
+                xhttp.open("GET", "https://robertocarli.000webhostapp.com/Esercizi%20Pratica/Esercitazione%20XMLHttpRequest/FileDaLeggere.html", true);
+                xhttp.send();
+            }
+
+        </script>
+    </body>
+</html>

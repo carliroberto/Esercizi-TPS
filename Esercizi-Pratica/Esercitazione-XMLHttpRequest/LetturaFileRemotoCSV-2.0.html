@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Lettura di un File Remoto CSV 2.0 - Carli Roberto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles-LetturaFileRemotoCSV.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    <style>
+        table, th, td {
+            border: 1px solid white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <center>
+            <div class="container">
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+            </div>
+        </center>
+    </div>
+
+    <div class="titolo">
+        <center>
+            <h1>Lettura di un <br> File Remoto CSV 2.0</h1>
+            <hr style="width: 100%;">
+        </center>
+    </div>
+
+    <div class="output">
+        <table>
+            <tbody id="tabella-body"></tbody>
+        </table>
+    </div>
+
+    <div class="bottone">
+        <input class="stile" type="button" onclick="LeggiFile()" value="Leggi il File CSV da Remoto">
+    </div>
+
+    <script>
+        function LeggiFile() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    var DatiFileCSV = this.responseText;
+
+                    // Dividi il contenuto del file CSV in righe
+                    var righe = DatiFileCSV.split('\n');
+
+                    // Crea una tabella HTML per visualizzare i dati
+                    var tabella = document.createElement("table");
+
+                    // Leggi ciascuna riga del file CSV
+                    for (var i = 0; i < righe.length; i++) {
+                        var riga = righe[i];
+
+                        // Dividi la riga in colonne
+                        var colonne = riga.split(',');
+
+                        // Crea una riga della tabella
+                        var tr = document.createElement("tr");
+
+                        // Leggi ciascuna colonna e aggiungila alla tabella
+                        for (var j = 0; j < colonne.length; j++) {
+                            var td = document.createElement("td");
+                            td.textContent = colonne[j];
+                            tr.appendChild(td);
+                        }
+
+                        // Aggiungi la riga alla tabella
+                        tabella.appendChild(tr);
+                    }
+
+                    // Ottieni l'elemento esistente "tabella-body"
+                    var tabellaEsistente = document.getElementById("tabella-body");
+
+                    // Rimuovi la tabella esistente, se presente
+                    if (tabellaEsistente) {
+                        tabellaEsistente.parentNode.removeChild(tabellaEsistente);
+                    }
+
+                    // Aggiungi la nuova tabella all'elemento desiderato
+                    tabella.id = "tabella-body";
+                    tabella.style.color = "white";
+                    document.querySelector(".output").appendChild(tabella);
+                }
+            };
+            xhttp.open("GET", "https://robertocarli.000webhostapp.com/Esercizi%20Pratica/Esercitazione%20XMLHttpRequest/FileCSV.csv", true);
+            xhttp.send();
+        }
+    </script>
+</body>
+</html>

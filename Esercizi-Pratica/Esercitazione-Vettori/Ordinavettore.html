@@ -1,0 +1,81 @@
+<html>
+    <head>
+
+        <title>Ordinamento Vettore - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-OrdinaVettore.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Ordinamento Vettore</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <input class="stileInput" type="number" id="InputNum" name="InputNum">
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="button" onclick="InserisciNum()" value="Inserisci Numeri">
+
+            <input class="stile" type="button" onclick="OrdinaVett()" value="Ordina Vettore">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+            <p id="out1"></p>
+
+        </div>
+
+        <script>
+
+            const vett=[];
+            document.getElementById("out").innerHTML=vett;
+
+            function InserisciNum(){
+                let x=document.getElementById("InputNum").value;
+                parseInt(x);
+                vett.push(x);
+                document.getElementById("out").innerHTML=vett;
+            }
+
+            function OrdinaVett(){
+                vett.sort(function(a, b){return a - b});
+                document.getElementById("out1").innerHTML=vett;
+            }
+
+        </script>
+    </body>
+</html>

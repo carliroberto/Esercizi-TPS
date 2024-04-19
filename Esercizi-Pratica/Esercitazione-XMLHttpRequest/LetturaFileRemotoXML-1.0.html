@@ -1,0 +1,84 @@
+<html>
+<head>
+    <title>Lettura di un File Remoto XML 1.0 - Carli Roberto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles-LetturaFileRemotoXML.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    <style>
+        table, th, td {
+            border: 1px solid white;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <center>
+            <div class="container">
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+            </div>
+        </center>
+    </div>
+
+    <div class="titolo">
+        <center>
+            <h1>Lettura di un <br> File Remoto XML 1.0</h1>
+            <hr style="width: 100%;">
+        </center>
+    </div>
+
+    <div class="output">
+        <table id="tabella"></table>
+    </div>
+
+    <div class="bottone">
+        <div class="bottoni-affiancati">
+            <input class="stile" type="button" onclick="LeggiFile()" value="Leggi File XML">
+            <input class="stile" type="button" onclick="apriLink()" value="Apri File XML">
+        </div>
+
+    </div>
+
+    <script>
+
+        function LeggiFile() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "FileXML.xml", true);
+            xhttp.send();
+        }
+
+        function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table = "<tr><th>Nome</th><th>Cognome</th><th>Classe</th><th>Sezione</th><th>Istituto</th></tr>";
+            var classe = xmlDoc.getElementsByTagName("classe");
+            var x = xmlDoc.getElementsByTagName("alunni");
+            var y = xmlDoc.getElementsByTagName("anno");
+            var z = xmlDoc.getElementsByTagName("sezione");
+            for (i = 0; i < x.length; i++) {
+                table += "<tr><td>" + x[i].getElementsByTagName("nome")[0].childNodes[0].nodeValue + "</td><td>" + x[i].getElementsByTagName("cognome")[0].childNodes[0].nodeValue + "</td><td>" + y[i].getElementsByTagName("numero")[0].childNodes[0].nodeValue + "</td><td>" + z[i].getElementsByTagName("lettera")[0].childNodes[0].nodeValue + "</td><td>" + classe[i].getAttribute("istituto") + "</td></tr>";
+            }
+            var tabella = document.getElementById("tabella");
+            tabella.style.color = "white";
+            tabella.innerHTML = table;
+        }
+
+
+        function apriLink(){
+            var link = "https://robertocarli.000webhostapp.com/Esercizi%20Pratica/Esercitazione%20XMLHttpRequest/FileXML.xml"
+            window.open(link, "_blank");
+        }
+
+    </script>
+</body>
+</html>

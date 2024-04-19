@@ -1,0 +1,123 @@
+<html>
+<head>
+    <title>Lettura di un File Remoto XML 2.0 - Carli Roberto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles-LetturaFileRemotoXML.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    <style>
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid white;
+            padding: 15px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="home">
+        <center>
+            <div class="container">
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+            </div>
+        </center>
+    </div>
+
+    <div class="titolo">
+        <center>
+            <h1>Lettura di un <br> File Remoto XML 2.0</h1>
+            <hr style="width: 100%;">
+        </center>
+    </div>
+
+    <div class="output">
+        <table id="tabella"></table>
+    </div>
+
+    <div class="bottone">
+        <div class="bottoni-affiancati">
+            <input class="stile" type="button" onclick="LeggiFile()" value="Leggi File XML">
+            <input class="stile" type="button" onclick="apriLink()" value="Apri File XML">
+        </div>
+
+    </div>
+
+    <script>
+
+        function LeggiFile() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    myFunction(this);
+                }
+            };
+            xhttp.open("GET", "FileXML.xml", true);
+            xhttp.send();
+        }
+
+        function myFunction(xml) {
+            var i;
+            var xmlDoc = xml.responseXML;
+            var table = document.createElement('table');
+            var thead = document.createElement('thead');
+            var tr = document.createElement('tr');
+
+            // Aggiungi le intestazioni delle colonne
+            var headers = ["Nome", "Cognome", "Classe", "Sezione", "Istituto"];
+            for (var j = 0; j < headers.length; j++) {
+                var th = document.createElement('th');
+                th.textContent = headers[j];
+                tr.appendChild(th);
+            }
+
+            thead.appendChild(tr);
+            table.appendChild(thead);
+
+            var tbody = document.createElement('tbody');
+            var classe = xmlDoc.getElementsByTagName("classe");
+            var x = xmlDoc.getElementsByTagName("alunni");
+            var y = xmlDoc.getElementsByTagName("anno");
+            var z = xmlDoc.getElementsByTagName("sezione");
+            for (i = 0; i < x.length; i++) {
+                var row = document.createElement('tr');
+
+                // Aggiungi i dati alle celle della tabella
+                var data = [
+                    x[i].getElementsByTagName("nome")[0].childNodes[0].nodeValue,
+                    x[i].getElementsByTagName("cognome")[0].childNodes[0].nodeValue,
+                    y[i].getElementsByTagName("numero")[0].childNodes[0].nodeValue,
+                    z[i].getElementsByTagName("lettera")[0].childNodes[0].nodeValue,
+                    classe[i].getAttribute("istituto")
+                ];
+
+                for (var j = 0; j < data.length; j++) {
+                    var td = document.createElement('td');
+                    td.textContent = data[j];
+                    row.appendChild(td);
+                }
+
+                tbody.appendChild(row);
+            }
+
+            table.appendChild(tbody);
+            var tabella = document.getElementById("tabella");
+            tabella.innerHTML = '';
+            table.style.color = "white";
+            tabella.appendChild(table);
+        }
+
+        function apriLink() {
+            var link = "https://robertocarli.000webhostapp.com/Esercizi%20Pratica/Esercitazione%20XMLHttpRequest/FileXML.xml";
+            window.open(link, "_blank");
+        }
+
+
+    </script>
+</body>
+</html>

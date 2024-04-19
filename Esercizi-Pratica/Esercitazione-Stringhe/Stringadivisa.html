@@ -1,0 +1,83 @@
+<html>
+    <head>
+
+        <title>Stringa Divisa - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-StringaDivisa.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Suddivisione Stringhe</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <input class="stileInput" type="text" id="Stringa" name="Stringa">
+
+        </div>
+
+        <div class="bottone">
+
+             <input class="stile" type="button" onclick="StampaStringa()" value="Visualizza Stringa">
+
+             <input class="stile" type="button" onclick="SuddivisioneStringa()" value="Suddividi Stringa">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+            <p id="out1"></p>
+
+        </div>
+
+        <script>
+
+        function StampaStringa(){
+            let St=document.getElementById("Stringa").value;
+            document.getElementById("out").innerHTML=St;
+        }
+
+        function SuddivisioneStringa(){
+            let St=document.getElementById("Stringa").value;
+            const vettStringa=St.split(" ");
+            St=" ";
+
+            for(let i=0; i<vettStringa.length; i++){
+                St= St + vettStringa[i] + "<br>"
+            }
+            document.getElementById("out1").innerHTML=St;
+        }
+     </script>
+
+    </body>
+
+</html>
