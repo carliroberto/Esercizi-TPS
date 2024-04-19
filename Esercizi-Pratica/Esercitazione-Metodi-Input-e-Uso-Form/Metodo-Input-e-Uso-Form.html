@@ -1,0 +1,259 @@
+<html>
+    <head>
+
+        <title>Metodi Input e Uso Form - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-MetodiInput-UsoForm.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Metodo Input e Uso Form</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <form>
+
+                <!-- Input Text: per il nome, cognome e indirizzo -->
+
+                <label>1) Inserisci Nome, Cognome e Indirizzo: </label>
+                <br><br>
+                <input class="stileinput" type="text" id="nome" name="nome">
+                <input class="stileinput" type="text" id="cognome" name="cognome">
+                <input class="stileinput" type="text" id="indirizzo" name="indirizzo">
+
+                <br><br>
+
+                <!-- Input RadioButton: per la scelta del sesso -->
+
+                <label>2) Inserisci il tuo sesso: </label>
+                <input class="stileinput" type="radio" id="sesso1" name="fav_language" value="Uomo">
+                <label for="Uomo">Uomo</label>
+                <input class="stileinput" type="radio" id="sesso2" name="fav_language" value="Donna">
+                <label for="Donna">Donna</label>
+                <input class="stileinput" type="radio" id="sesso3" name="fav_language" value="Altro">
+                <label for="Altro">Altro</label>
+
+                <br><br>
+
+                <!-- Input Checkbox: per la scelta degli interessi -->
+
+                <label>3) Inserisci i tuoi interessi: </label>
+                <input class="stileinput" type="checkbox" id="interesse1" name="interesse1" value="Calcio">
+                <label for="interesse1">Calcio</label>
+                <input class="stileinput" type="checkbox" id="interesse2" name="interesse2" value="Fai da Te">
+                <label for="interesse2">Fai da Te</label>
+                <input class="stileinput" type="checkbox" id="interesse3" name="interesse3" value="Giardinaggio">
+                <label for="interesse3">Giardinaggio</label>
+
+                <br><br>
+
+                <!-- Input List Box: per la scelta del titolo di studio -->
+
+                <label for="titolodistudio">4) Seleziona titolo di studio conseguito: </label>
+                <select class="stileinput" name="titolodistudio" id="titolodistudio" size="3">
+                    <option value="Laurea Breve">Laurea Breve</option>
+                    <option value="Laurea Magistrale">Laurea Magistrale</option>
+                    <option value="Diploma Superiori">Diploma delle Superiori</option>
+                </select>
+
+                <br><br>
+
+                <!-- Input Drop Down List: per la scelta della provincia d'appartenenza -->
+
+                <label for="provincia">5) Seleziona provincia d'appartenenza: </label>
+                <select class="stileinput" name="provincia" id="provincia">
+                    <option value="Bergamo">Bergamo</option>
+                    <option value="Brescia">Brescia</option>
+                    <option value="Como">Como</option>
+                    <option value="Cremona">Cremona</option>
+                    <option value="Lecco">Lecco</option>
+                    <option value="Lodi">Lodi</option>
+                    <option value="Mantova">Mantova</option>
+                    <option value="Milano">Milano</option>
+                    <option value="Monza e Brianza">Monza e Brianza</option>
+                    <option value="Pavia">Pavia</option>
+                    <option value="Sondrio">Sondrio</option>
+                    <option value="Varese">Varese</option>
+                </select>
+
+            </form>
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="button" onclick="Stampa()" value="Inserisci Dati nel Sistema">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+        </div>
+
+        <script>
+
+            function Stampa(){
+
+                let nome=document.getElementById("nome").value;
+                let cognome=document.getElementById("cognome").value;
+                let indirizzo=document.getElementById("indirizzo").value;
+
+                let sesso;
+
+                let sesso1=document.getElementById("sesso1").value;
+                let sesso2=document.getElementById("sesso2").value;
+                let sesso3=document.getElementById("sesso3").value;
+
+                if(document.getElementById("sesso1").checked){
+
+                   sesso=sesso1;
+                }
+
+                else if(document.getElementById("sesso2").checked){
+
+                    sesso=sesso2;
+                }
+
+                else if(document.getElementById("sesso3").checked){
+
+                    sesso=sesso3;
+                }
+
+                else{
+
+                   sesso="Nessun sesso selezionato";
+                }
+
+                let interessi;
+
+                let interesse1=document.getElementById("interesse1").value;
+                let interesse2=document.getElementById("interesse2").value;
+                let interesse3=document.getElementById("interesse3").value;
+
+                if(document.getElementById("interesse1").checked && document.getElementById("interesse2").checked && document.getElementById("interesse3").checked){
+
+                    interessi=interesse1+", "+interesse2+" e "+interesse3;
+
+                }
+
+                else if(document.getElementById("interesse1").checked && document.getElementById("interesse2").checked){
+
+                    interessi=interesse1+" e "+interesse2;
+
+                }
+
+                else if(document.getElementById("interesse1").checked && document.getElementById("interesse3").checked){
+
+                    interessi=interesse1+" e "+interesse3;
+
+                }
+
+                else if(document.getElementById("interesse2").checked && document.getElementById("interesse3").checked){
+
+                    interessi=interesse2+" e "+interesse3;
+
+                }
+
+                else if(document.getElementById("interesse1").checked ){
+
+                    interessi=interesse1;
+
+                }
+
+                else if(document.getElementById("interesse2").checked){
+
+                    interessi=interesse2;
+
+                }
+
+                else if(document.getElementById("interesse3").checked){
+
+                    interessi=interesse3;
+
+                }
+
+                else{
+
+                    interessi="Nessun interesse selezionato";
+
+                }
+
+                let titolodistudio=document.getElementById("titolodistudio").value;
+                let provincia=document.getElementById("provincia").value;
+
+                const dati=["Nome: "+nome, "<br>Cognome: "+cognome, "<br>Indirizzo: "+indirizzo, "<br>Sesso: "+sesso, "<br>Interessi: "+interessi, "<br>Titolo di Studio: "+titolodistudio, "<br>Provincia d'appartenenza: "+provincia];
+
+                //Primo metodo di stampa dei dati:
+
+                /*for(let i=0; i<dati.length; i++){
+                    document.write(dati[i]+"<br>");
+                }*/
+
+                //Secondo metodo di stampa dei dati:
+
+                /*window.alert(dati);*/
+
+                //Terzo Metodo di stampa dei dati:
+
+                /*document.getElementById("out").innerHTML=dati;*/
+
+                //Quarto Metodo di stampa dei dati:
+
+                if (typeof(Storage) !== "undefined") {
+
+                    //Primo metodo richiamando tutti i dati separati:
+
+                    /*
+                    localStorage.setItem("Nome", nome);
+                    localStorage.setItem("Cognome", cognome);
+                    localStorage.setItem("Indirizzo", indirizzo);
+                    localStorage.setItem("Sesso", sesso);
+                    localStorage.setItem("Interessi", interessi);
+                    localStorage.setItem("Titolo di Studio", titolodistudio);
+                    localStorage.setItem("Provincia d'appartenenza", provincia);
+                    */
+
+                    //Secondo metodo richiamando tutti i dati insieme:
+
+                    localStorage.setItem("Dati", dati);
+                }
+                else {
+                    document.getElementById("stampa").innerHTML = "Il browser non supporta lo storage";
+                }
+
+                document.location.href="Stampa-Dati-Metodi-Input-e-Uso-Form.html";
+            }
+
+        </script>
+    </body>
+</html>

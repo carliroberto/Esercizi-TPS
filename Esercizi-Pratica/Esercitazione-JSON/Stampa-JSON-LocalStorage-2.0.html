@@ -1,0 +1,59 @@
+<html>
+    <head>
+
+        <title>Stampa Dati JSON e LocalStorage Versione 2.0 - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-Stampa-JSON-2.0.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="JSON - 2.0.html">TORNA <br> AI DATI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <center>
+
+                <h1>Stampa JSON <br> e LocalStorage</h1>
+
+                <hr style="width: 100%;">
+
+            </center>
+
+        </div>
+
+        <div class="output">
+
+            <p id="StampaDati"></p>
+
+        </div>
+
+        <script>
+
+            const obj = localStorage.getItem("Oggetto");
+            const dati = JSON.parse(obj);
+            document.getElementById("StampaDati").innerHTML = dati.Finale;
+
+        </script>
+
+    </body>
+</html>

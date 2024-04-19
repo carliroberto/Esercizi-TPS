@@ -1,0 +1,164 @@
+<html>
+    <head>
+
+        <title>JSON e LocalStorage - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-JSON.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>JSON e LocalStorage</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <p>- Inserisci Nome e Cognome: </p>
+
+            <br>
+
+            <input class="stileinput" type="text" id="nome" placeholder="Es. Roberto">
+
+            <input class="stileinput" type="text" id="cognome" placeholder="Es. Carli">
+
+            <br><br>
+
+            <p>- Inserisci Email e Telefono: </p>
+
+            <br>
+
+            <input class="stileinput" type="email" id="email" placeholder="Es. mario.rossi@gmail.com">
+
+            <input class="stileinput" type="tel" id="telefono" placeholder="Es. 340-1592195">
+
+            <br><br>
+
+            <p>- Seleziona il tuo Sesso:</p>
+
+            <br>
+
+            <center>
+
+                <input class="stileinput" type="radio" id="sesso1" name="sesso" value="Uomo">
+                <label for="Uomo">Uomo</label>
+                <input class="stileinput" type="radio" id="sesso2" name="sesso" value="Donna">
+                <label for="Donna">Donna</label>
+                <input class="stileinput" type="radio" id="sesso3" name="sesso" value="Altro">
+                <label for="Altro">Altro</label>
+
+            </center>
+
+            <br>
+
+            <p>- Seleziona i tuoi Interessi:</p>
+
+            <br>
+
+            <center>
+
+                <input class="stileinput" type="checkbox" id="interesse1" name="interessi" value="Calcio">
+                <label for="interesse1">Calcio</label>
+                <input class="stileinput" type="checkbox" id="interesse2" name="interessi" value="Fai da Te">
+                <label for="interesse2">Fai da Te</label>
+                <input class="stileinput" type="checkbox" id="interesse3" name="interessi" value="Giardinaggio">
+                <label for="interesse3">Giardinaggio</label>
+
+            </center>
+
+            <br>
+
+            <p>- Inserisci la Data di Nascita: </p>
+
+            <br>
+
+            <center>
+
+                <input class="stileinput" type="date" id="datanascita">
+
+            </center>
+
+        </div>
+
+        <div class="bottone">
+
+
+            <input class="stile" type="button" onclick="Stampa()" value="Inserisci Dati nel Sistema">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+        </div>
+
+        <script>
+
+            function Stampa(){
+
+                let nome=document.getElementById("nome").value;
+                let cognome=document.getElementById("cognome").value;
+                let email=document.getElementById("email").value;
+                let telefono=document.getElementById("telefono").value;
+                let datanascita=document.getElementById("datanascita").value;
+                const sesso = [];
+                const interessi = [];
+
+                for(var i=0, j=1; i<3; i++, j++) {
+                    var cond;
+                    cond=document.getElementsByName("sesso")[i]?.checked;
+                    if(cond==true) {
+                        sesso.push(" " + document.getElementsByName("sesso")[i].value);
+                    }
+                }
+
+                for(var i=0, j=1; i<3; i++, j++) {
+                    var cond;
+                    cond=document.getElementsByName("interessi")[i]?.checked;
+                    if(cond==true) {
+                        interessi.push(" " + document.getElementsByName("interessi")[i].value);
+                    }
+                }
+
+                const obj = {Nome: nome, Cognome: cognome, Email: email, Telefono: telefono, Sesso: sesso, Interessi: interessi, Datadinascita: datanascita};
+                const oggetto = JSON.stringify(obj);
+
+                if (typeof(Storage) !== "undefined") {
+                    localStorage.setItem("Oggetto", oggetto);
+                }
+
+                else {
+                    document.getElementById("stampa").innerHTML = "Il browser non supporta lo storage";
+                }
+                document.location.href="Stampa-JSON-LocalStorage.html";
+            }
+
+        </script>
+    </body>
+</html>

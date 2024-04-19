@@ -1,0 +1,82 @@
+<html>
+
+    <head>
+
+        <title>Metodo RegExp - Search - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-MetodoRegExp-Search.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Metodo RegExp - Search</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <input class="stileinput" type="text" id="Stringa" name="Stringa">
+
+            <br>
+
+            <input class="stileinput" type="text" id="Stringa1" name="Stringa1">
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="button" onclick="Stampa()" value="Stampa Risultato">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+            <p id="out1"></p>
+
+        </div>
+
+        <script>
+
+            function Stampa(){
+
+                let text = document.getElementById("Stringa").value;
+                let risultato = text.search(/[a-d][0-4]/igm);
+                document.getElementById("out").innerHTML = risultato;
+
+                let text1 = document.getElementById("Stringa1").value;
+                let risultato1 = text1.search(/[^a-d][^0-4]/igm);
+                document.getElementById("out1").innerHTML = risultato1;
+            }
+
+        </script>
+
+    </body>
+
+</html>

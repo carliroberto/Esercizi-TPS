@@ -1,0 +1,60 @@
+<html>
+    <head>
+
+        <title>Stampa Dati Metodi Input e Uso Form - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-StampaMetodiInput-UsoForm.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="Metodo Input e Uso Form.html">TORNA <br> AI DATI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Stampa Metodo Input e Uso Form</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="output">
+
+            <p id="StampaDati"></p>
+
+        </div>
+
+        <script>
+
+            //Primo metodo di stampa:
+
+            //document.getElementById("StampaDati").innerHTML = "Dati anagrafica: <br>"+"Nome: "+localStorage.getItem("Nome")+"<br>"+"Cognome: "+localStorage.getItem("Cognome")+"<br>"+"Indirizzo: "+localStorage.getItem("Indirizzo")+"<br>"+"Sesso: "+localStorage.getItem("Sesso")+"<br>"+"Interessi: "+localStorage.getItem("Interessi")+"<br>"+"Titolo di studio: "+localStorage.getItem("Titolo di Studio")+"<br>"+"Provincia d'appartenenza: "+localStorage.getItem("Provincia d'appartenenza");
+
+            //Secondo metodo di stampa:
+
+            document.getElementById("StampaDati").innerHTML = "Dati anagrafica: <br>"+localStorage.getItem("Dati")
+
+        </script>
+
+
+    </body>
+</html>

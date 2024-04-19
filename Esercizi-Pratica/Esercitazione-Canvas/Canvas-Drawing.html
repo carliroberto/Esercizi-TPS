@@ -1,0 +1,126 @@
+<html>
+    <head>
+
+        <title>Drawing e Canvas - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-Canvas-Drawing.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Drawing - Canvas</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <input class="stileInput" type="number" id="numero" name="numero">
+
+            <input class="stile" type="button" onclick="disegnaRetta()" value="Disegna Retta">
+
+            <br><br>
+
+            <canvas id="canvas" width="350" height="300" style="border: 10px solid #d3d3d3; border-radius: 10px;"></canvas>
+
+        </div>
+
+        <script>
+
+            var c = document.getElementById("canvas");
+            var ctx = c.getContext("2d");
+            ctx.strokeStyle = "white";
+            ctx.fillStyle = "white";
+
+            function disegnaRetta(){
+
+                ctx.clearRect(0, 0, c.width, c.height);
+                let numero=document.getElementById("numero").value;
+                ctx.beginPath();
+
+                //Disegno della retta con il coefficente angolare da noi inserito
+
+                let y=numero*(c.height/2);
+                let x1=c.width;
+                let x2=0;
+
+                //Verifico il valore numerico inserito
+
+                if(numero>0 || numero<0){
+                    x1=0;
+                    x2=c.width;
+                    y=-y;
+                }
+                else if(numero==0){
+                    x1=c.width;
+                    x2=0;
+                    y=0;
+                }
+
+                ctx.moveTo(c.width/2, c.height/2);
+                ctx.lineTo(x1, -y+(c.height/2));
+                ctx.moveTo(c.width/2, c.height/2);
+                ctx.lineTo(x2, y+(c.height/2));
+
+                //Disegno rette piano cartesiano
+
+                ctx.moveTo(175,0);
+                ctx.lineTo(175,300);
+                ctx.moveTo(0,150);
+                ctx.lineTo(350,150);
+
+                //Disegno freccia asse Y
+
+                ctx.moveTo(175,0);
+                ctx.lineTo(180,10);
+                ctx.moveTo(175,0);
+                ctx.lineTo(170,10);
+
+                //Disegno freccia asse X
+
+                ctx.moveTo(350,150);
+                ctx.lineTo(340,145);
+                ctx.moveTo(350,150);
+                ctx.lineTo(340,155);
+
+                //Inserimento del testo per identificare assi cartesiani e origine
+
+                ctx.font = "15px Arial";
+                ctx.fillText("Asse X",295,170);
+                ctx.font = "15px Arial";
+                ctx.fillText("Asse Y",120,15);
+                ctx.font = "15px Arial";
+                ctx.fillText("O",160,165);
+
+                ctx.stroke();
+            }
+
+        </script>
+
+    </body>
+
+</html>

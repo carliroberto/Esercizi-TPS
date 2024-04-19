@@ -1,0 +1,95 @@
+<html>
+    <head>
+
+        <title>Calcolatrice Versione 1.0 - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-1.0.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Calcolatrice Versione 1.0</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <input class="stileInput" type="number" id="PrimoNumero" name="n1">
+
+            <br>
+
+            <input class="stileInput" type="number" id="SecondoNumero" name="n2">
+
+            <br>
+
+            <input class="stileInput" type="text" id="Segno" name="S">
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="button" onclick="Operazione()" value="Stampa Calcolo">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+        </div>
+
+        <script>
+
+        function Operazione(){
+            let x=document.getElementById("PrimoNumero").value;
+            let y=document.getElementById("SecondoNumero").value;
+            let z=document.getElementById("Segno").value;
+            x=x*1;
+            y=y*1;
+
+            let Operazione;
+
+            switch (z){
+                case "Addizione":
+                    Operazione=x+y;
+                    break;
+                case "Sottrazione":
+                    Operazione=x-y;
+                    break;
+                case "Moltiplicazione":
+                    Operazione=x*y;
+                    break;
+                case "Divisione":
+                    Operazione=x/y;
+                    break;
+            }
+            document.getElementById("out").innerHTML=Operazione;
+        }
+        </script>
+    </body>
+ </html>

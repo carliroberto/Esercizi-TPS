@@ -1,0 +1,106 @@
+<html>
+    <head>
+
+        <title>Calcolatrice Versione 2.0 - Carli Roberto</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="styles-2.0.css">
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+
+        <link rel="icon" type="image/x-icon" href="Favicon.ico">
+
+    </head>
+
+    <body>
+
+        <div class="home">
+
+            <center>
+
+            <div class="container">
+
+                <div class="btn"><a href="../index.html">TORNA AGLI <br> ESERCIZI</a></div>
+
+            </div>
+
+            </center>
+
+        </div>
+
+        <div class="titolo">
+
+            <h1>Calcolatrice Versione 2.0</h1>
+
+            <hr style="width: 100%;">
+
+        </div>
+
+        <div class="input">
+
+            <input class="stileInput" type="number" id="PrimoNumero" name="n1">
+
+            <input class="stileInput" type="number" id="SecondoNumero" name="n2">
+
+        </div>
+
+        <div class="bottone">
+
+            <input class="stile" type="button" onclick="Somma()" value="Somma">
+
+            <input class="stile" type="button" onclick="Sottrazione()" value="Sottrai">
+
+            <input class="stile" type="button" onclick="Moltiplica()" value="Moltiplica">
+
+            <input class="stile" type="button" onclick="Dividi()" value="Dividi">
+
+        </div>
+
+        <div class="output">
+
+            <p id="out"></p>
+
+        </div>
+
+        <script>
+            function Somma(){
+                let x=document.getElementById("PrimoNumero").value;
+                let y=document.getElementById("SecondoNumero").value;
+                x=x*1;
+                y=y*1;
+                let Somma;
+                Somma=x+y;
+                document.getElementById("out").innerHTML=Somma;
+            }
+
+            function Sottrazione(){
+                let x=document.getElementById("PrimoNumero").value;
+                let y=document.getElementById("SecondoNumero").value;
+                x=x*1;
+                y=y*1;
+                let Sottrazione;
+                Sottrazione=x-y;
+                document.getElementById("out").innerHTML=Sottrazione;
+            }
+            function Moltiplica(){
+                let x=document.getElementById("PrimoNumero").value;
+                let y=document.getElementById("SecondoNumero").value;
+                x=x*1;
+                y=y*1;
+                let Moltiplica;
+                Moltiplica=x*y;
+                document.getElementById("out").innerHTML=Moltiplica;
+            }
+            function Dividi(){
+                let x=document.getElementById("PrimoNumero").value;
+                let y=document.getElementById("SecondoNumero").value;
+                x=x*1;
+                y=y*1;
+                let Dividi;
+                Dividi=x/y;
+                document.getElementById("out").innerHTML=Dividi;
+            }
+        </script>
+    </body>
+ </html>
