@@ -1,9 +1,10 @@
-<html ng-app="myApp" ng-controller="NavController">
+<!DOCTYPE html>
+<html ng-app="myApp">
 
 <head>
   <meta charset="utf-8">
-  <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.freepik.com/256/3779/3779197.png?ga=GA1.1.779694396.1662405921&semt=ais">
   <title>Routing Angular 3.0 - Carli Roberto</title>
+  <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.freepik.com/256/3779/3779197.png?ga=GA1.1.779694396.1662405921&semt=ais">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
   <style>
     .container {
@@ -109,12 +110,10 @@
     .center {
       width: 100%
     }
-
-    ;
   </style>
 </head>
 
-<body>
+<body ng-controller="NavController">
   <div class="container">
     <br>
     <img src="F1.png" alt="F1 Image">
@@ -122,23 +121,9 @@
   <br><br>
 
   <div>
-    <a ng-click="navigate('/scuderie')">
-      <button>
-        <span class="box">Team</span>
-      </button>
-    </a>
-
-    <a ng-click="navigate('/')">
-      <button>
-        <span class="box">Home</span>
-      </button>
-    </a>
-
-    <a ng-click="navigate('/piloti')">
-      <button>
-        <span class="box">Driver</span>
-      </button>
-    </a>
+    <button ng-click="navigate('/scuderie')"><span class="box">Team</span></button>
+    <button ng-click="navigate('/')"><span class="box">Home</span></button>
+    <button ng-click="navigate('/piloti')"><span class="box">Driver</span></button>
   </div>
 
   <br><br>
@@ -147,79 +132,43 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular-cookies.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
-
   <script>
-    // Definizione del modulo AngularJS 'myApp' e delle sue dipendenze, incluso ngRoute
     var app = angular.module('myApp', ['ngRoute']);
-    
-    // Configurazione delle route del sito
+
     app.config(function($routeProvider) {
-      // Definizione della route per la homepage
       $routeProvider
         .when('/', {
-          // Caricamento del template 'HomeF1.html' per la homepage e associazione del controller 'NavController'
           templateUrl: 'HomeF1.html',
-          controller: 'NavController'
+          controller: 'HomeController'
         })
-        // Definizione della route per la pagina delle scuderie
         .when('/scuderie', {
-          // Caricamento del template 'scuderie.html' per la pagina delle scuderie e associazione del controller 'SCtrl'
           templateUrl: 'scuderie.html',
-          controller: 'SCtrl'
+          controller: 'TeamController'
         })
-        // Definizione della route per la pagina dei piloti
         .when('/piloti', {
-          // Caricamento del template 'piloti.html' per la pagina dei piloti e associazione del controller 'PCtrl'
           templateUrl: 'piloti.html',
-          controller: 'PCtrl'
-        });
+          controller: 'DriverController'
+        })
+        .otherwise({ redirectTo: '/' });
     });
-    
-    // Definizione del controller 'NavController'
+
     app.controller('NavController', function($scope, $location) {
-      // Funzione per la navigazione all'interno della pagina
       $scope.navigate = function(path) {
         $location.path(path);
       };
     });
-    
-    // Definizione del controller 'SCtrl'
-    app.controller('SCtrl', function($scope, $location, $routeParams) {
-      // Funzione per l'inserimento dei dati relativi alle scuderie
-      $scope.inserisci = function(place, date, hour, team, penalty, description) {
-        // Conversione dei dati in formato JSON e formattazione dei risultati
-        $scope.dati = angular.toJson({
-          Place: place,
-          Date: date,
-          Hour: hour,
-          Team: team,
-          Penalty: penalty,
-          Description: description
-        }, true).slice(1, -1).replace(/,/g, ' - ').replace(/"/g, '');
-      };
-    });
-    
-    // Definizione del controller 'PCtrl'
-    app.controller('PCtrl', function($scope, $location, $routeParams) {
-      // Funzione per l'inserimento dei dati relativi ai piloti
-      $scope.inserisci = function(place, date, hour, driver, dnumber, team, penalty, description) {
-        // Conversione dei dati in formato JSON e formattazione dei risultati
-        $scope.dati = angular.toJson({
-          Place: place,
-          Date: date,
-          Hour: hour,
-          Driver: driver,
-          Number: dnumber,
-          Team: team,
-          Penalty: penalty,
-          Description: description
-        }, true).slice(1, -1).replace(/,/g, ' - ').replace(/"/g, '');
-      };
+
+    app.controller('HomeController', function($scope) {
+      // Controller per la homepage, se necessario
     });
 
+    app.controller('TeamController', function($scope) {
+      // Controller per la pagina delle scuderie, se necessario
+    });
 
+    app.controller('DriverController', function($scope) {
+      // Controller per la pagina dei piloti, se necessario
+    });
   </script>
 
 </body>
