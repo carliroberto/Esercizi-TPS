@@ -179,7 +179,7 @@
       function showArticles() {
         var searchTerm = document.getElementById('search').value;
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://fortune.com/wp-json/wp/v2/posts", true);
+        xhr.open("GET", "https://www.newyorker.com//wp-json/wp/v2/posts", true);
         xhr.onreadystatechange = function () {
           if (xhr.readyState == 4 && xhr.status == 200) {
             var posts = JSON.parse(xhr.responseText);
