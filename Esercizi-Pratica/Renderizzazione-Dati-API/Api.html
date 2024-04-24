@@ -1,0 +1,213 @@
+<html>
+  <head>
+    <title>Renderizzazione Dati Api - Carli Roberto</title>
+    <link rel="icon" type="image/x-icon" href="Favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&display=swap">
+
+    <style>
+      .input {
+        --input-focus: grey;
+        --font-color: #323232;
+        --font-color-sub: #666;
+        --bg-color: #fff;
+        --main-color: #323232;
+        width: 200px;
+        height: 40px;
+        border-radius: 5px;
+        border: 2px solid var(--main-color);
+        background-color: var(--bg-color);
+        box-shadow: 4px 4px var(--main-color);
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--font-color);
+        padding: 5px 10px;
+        outline: none;
+        font-family: 'barlow', sans-serif;
+      }
+
+      .input::placeholder {
+        color: var(--font-color-sub);
+        opacity: 0.8;
+      }
+
+      .input:focus {
+        border: 2px solid var(--input-focus);
+      }
+
+      button {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        border: 0;
+        vertical-align: middle;
+        text-decoration: none;
+        background: transparent;
+        padding: 0;
+        font-size: inherit;
+        font-family: 'barlow', sans-serif;
+        margin-left: 30px;
+      }
+
+      button.learn-more {
+        width: 13rem;
+        height: auto;
+      }
+
+      button.learn-more .circle {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: relative;
+        display: block;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
+        background: #282936;
+        border-radius: 1.625rem;
+      }
+
+      button.learn-more .circle .icon {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #fff;
+      }
+
+      button.learn-more .circle .icon.arrow {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        left: 0.625rem;
+        width: 1.125rem;
+        height: 0.125rem;
+        background: none;
+      }
+
+      button.learn-more .circle .icon.arrow::before {
+        position: absolute;
+        content: "";
+        top: -0.29rem;
+        right: 0.0625rem;
+        width: 0.625rem;
+        height: 0.625rem;
+        border-top: 0.125rem solid #fff;
+        border-right: 0.125rem solid #fff;
+        transform: rotate(45deg);
+      }
+
+      button.learn-more .button-text {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: #282936;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      button:hover .circle {
+        width: 100%;
+      }
+
+      button:hover .circle .icon.arrow {
+        background: #fff;
+        transform: translate(1rem, 0);
+      }
+
+      button:hover .button-text {
+        color: #fff;
+      }
+
+      .container {
+        display: flex; /* Utilizza il layout flessibile */
+        justify-content: space-between; /* Distribuisci gli spazi tra i div */
+      }
+
+      .left, .right {
+        width: 20%; /* Larghezza del 30% della larghezza del contenitore */
+        padding: 20px; /* Padding per spaziare il contenuto */
+        box-sizing: border-box; /* Assicura che il padding non aumenti la larghezza del div */
+        background-color: transparent; /* Colore di sfondo per visualizzare i div */
+      }
+
+      .center {
+        width: 50%; /* Larghezza del 30% della larghezza del contenitore */
+        padding: 20px; /* Padding per spaziare il contenuto */
+        box-sizing: border-box; /* Assicura che il padding non aumenti la larghezza del div */
+        background-color: transparent; /* Colore di sfondo per visualizzare i div */
+      }
+
+    </style>
+  </head>
+  <body>
+    <center>
+      <h1 style="font-family: 'Oswald', sans-serif;">Latest Articles from Fortune</h1>
+      <br>
+      <div id="input">
+        <input type="text" placeholder="Search" name="search" class="input" id="search">
+        <button onclick="showArticles()"class="learn-more">
+          <span class="circle" aria-hidden="true">
+            <span class="icon arrow"></span>
+          </span>
+          <span class="button-text">Search now</span>
+        </button>
+      </div>
+    </center>
+
+    <div class="container">
+      <!-- Div sinistro -->
+      <div class="left"></div>
+      <!-- Div centrale -->
+      <div class="center">
+        <center>
+          <p id="niente" style="font-family: 'oswald', sans-serif; font-size: 20px;"></p>
+        </center>
+        <ul id="articles-list" style="display: none; font-family: 'barlow', sans-serif;"></ul>
+      </div>
+      <!-- Div destro -->
+      <div class="right"></div>
+    </div>
+
+    <script>
+
+      function showArticles() {
+        var searchTerm = document.getElementById('search').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://fortune.com/wp-json/wp/v2/posts", true);
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4 && xhr.status == 200) {
+            var posts = JSON.parse(xhr.responseText);
+            var articlesList = document.getElementById('articles-list');
+            articlesList.innerHTML = ''; // Clear the list before adding new items
+            articlesList.style.display = 'block'; // Show the list when data is ready
+            var foundArticles = false; // Flag to track if articles are found
+            posts.forEach(function(post) {
+              if(post.title.rendered.toLowerCase().includes(searchTerm.toLowerCase())) {
+                var li = document.createElement('li');
+                li.textContent = post.title.rendered;
+                articlesList.appendChild(li);
+                foundArticles = true; // Set flag to true if articles are found
+              }
+            });
+
+            // Check if no articles are found
+            if (!foundArticles) {
+              document.getElementById('niente').textContent = "Nessun articolo trovato.";
+            }
+            else {
+              document.getElementById('niente').textContent = "Articoli trovati:"; // Clear the message if articles are found
+            }
+          }
+        };
+        xhr.send();
+      }
+
+    </script>
+  </body>
+</html>
