@@ -207,14 +207,7 @@
         };
         xhr.send();
       }
-
-      app.use(function(req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*"); // Imposta l'intestazione per consentire l'accesso da qualsiasi origine
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-      });
-
-
+      
     </script>
   </body>
 </html>
