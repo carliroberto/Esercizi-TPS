@@ -176,36 +176,54 @@
 
     <script>
 
+      // Definizione della funzione showArticles()
       function showArticles() {
-        var searchTerm = document.getElementById('search').value;
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://fortune.com/wp-json/wp/v2/posts", true);
-        xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            var posts = JSON.parse(xhr.responseText);
-            var articlesList = document.getElementById('articles-list');
-            articlesList.innerHTML = ''; // Clear the list before adding new items
-            articlesList.style.display = 'block'; // Show the list when data is ready
-            var foundArticles = false; // Flag to track if articles are found
-            posts.forEach(function(post) {
-              if(post.title.rendered.toLowerCase().includes(searchTerm.toLowerCase())) {
-                var li = document.createElement('li');
-                li.textContent = post.title.rendered;
-                articlesList.appendChild(li);
-                foundArticles = true; // Set flag to true if articles are found
+          // Recupero del termine di ricerca dall'elemento con id 'search'
+          var searchTerm = document.getElementById('search').value;
+          // Creazione di una nuova richiesta XMLHttpRequest
+          var xhr = new XMLHttpRequest();
+          // Impostazione della richiesta GET per recuperare i post da un URL
+          xhr.open("GET", "https://fortune.com/wp-json/wp/v2/posts", true);
+          // Definizione della funzione da eseguire quando lo stato della richiesta cambia
+          xhr.onreadystatechange = function () {
+              // Verifica se la richiesta è stata completata e ha avuto successo
+              if (xhr.readyState == 4 && xhr.status == 200) {
+                  // Conversione della risposta JSON in un oggetto JavaScript
+                  var posts = JSON.parse(xhr.responseText);
+                  // Recupero dell'elemento con id 'articles-list'
+                  var articlesList = document.getElementById('articles-list');
+                  // Svuotamento della lista prima di aggiungere nuovi elementi
+                  articlesList.innerHTML = '';
+                  // Visualizzazione della lista quando i dati sono pronti
+                  articlesList.style.display = 'block';
+                  // Flag per tracciare se sono stati trovati articoli
+                  var foundArticles = false;
+                  // Iterazione sui post recuperati
+                  posts.forEach(function(post) {
+                      // Verifica se il titolo del post include il termine di ricerca
+                      if(post.title.rendered.toLowerCase().includes(searchTerm.toLowerCase())) {
+                          // Creazione di un nuovo elemento <li> e impostazione del suo testo con il titolo del post
+                          var li = document.createElement('li');
+                          li.textContent = post.title.rendered;
+                          // Aggiunta dell'elemento <li> alla lista
+                          articlesList.appendChild(li);
+                          // Impostazione del flag a true se sono stati trovati articoli
+                          foundArticles = true;
+                      }
+                  });
+                  // Verifica se non sono stati trovati articoli
+                  if (!foundArticles) {
+                      // Impostazione del testo dell'elemento con id 'niente' a "Nessun articolo trovato."
+                      document.getElementById('niente').textContent = "Nessun articolo trovato.";
+                  } else {
+                      // Impostazione del testo dell'elemento con id 'niente' a "Articoli trovati:"
+                      // Se sono stati trovati articoli
+                      document.getElementById('niente').textContent = "Articoli trovati:";
+                  }
               }
-            });
-
-            // Check if no articles are found
-            if (!foundArticles) {
-              document.getElementById('niente').textContent = "Nessun articolo trovato.";
-            }
-            else {
-              document.getElementById('niente').textContent = "Articoli trovati:"; // Clear the message if articles are found
-            }
-          }
-        };
-        xhr.send();
+          };
+          // Invio della richiesta
+          xhr.send();
       }
       
     </script>
